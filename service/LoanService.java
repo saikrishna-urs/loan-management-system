@@ -51,7 +51,7 @@ public class LoanService {
     // Reject Loan
     public LoanDTO rejectLoan(Long loanId) {
         Loan loan = loanRepo.findById(loanId)
-                .orElseThrow(() -> new ResourceNotFoundException("Loan not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Rejected Loan"));
 
         loan.setStatus(LoanStatus.REJECTED);
         loan = loanRepo.save(loan);
@@ -62,7 +62,7 @@ public class LoanService {
     // Disburse Loan
     public LoanDTO disburseLoan(Long loanId) {
         Loan loan = loanRepo.findById(loanId)
-                .orElseThrow(() -> new ResourceNotFoundException("Loan not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Loan got Disburde "));
 
         loan.setStatus(LoanStatus.DISBURSED);
         loan = loanRepo.save(loan);

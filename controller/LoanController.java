@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Spring.Loan.entity.Loan;
+import com.Spring.Loan.dto.LoanDTO;
 import com.Spring.Loan.entity.LoanStatus;
 import com.Spring.Loan.service.LoanService;
 
@@ -20,54 +20,58 @@ import com.Spring.Loan.service.LoanService;
 @RequestMapping("/loans")
 public class LoanController {
 
-    @Autowired
-    private LoanService loanService;
+	 @Autowired
+	    private LoanService loanService;
 
-    // Apply Loan
-    @PostMapping("/{userId}")
-    public Loan applyLoan(@PathVariable Long userId,
-                          @RequestBody Loan loan) {
-        return loanService.applyLoan(userId, loan);
-    }
+	    // Apply Loan
+	    @PostMapping("/{userId}")
+	    public LoanDTO applyLoan(@PathVariable Long userId,
+	                             @RequestBody LoanDTO loanDTO) {
+	        return loanService.applyLoan(userId, loanDTO);
+	    }
 
-    // Approve Loan
-    @PutMapping("/approve/{loanId}")
-    public Loan approveLoan(@PathVariable Long loanId) {
-        return loanService.approveLoan(loanId);
-    }
+	    // Approve Loan
+	    @PutMapping("/approve/{loanId}")
+	    public LoanDTO approveLoan(@PathVariable Long loanId) {
+	        return loanService.approveLoan(loanId);
+	    }
 
-    // Reject Loan
-    @PutMapping("/reject/{loanId}")
-    public Loan rejectLoan(@PathVariable Long loanId) {
-        return loanService.rejectLoan(loanId);
-    }
-    //close loan
-    @PutMapping("/close/{loanId}")
-    public Loan closeLoan(@PathVariable Long loanId) {
-        return loanService.closeLoan(loanId);
-    }
+	    // Reject Loan
+	    @PutMapping("/reject/{loanId}")
+	    public LoanDTO rejectLoan(@PathVariable Long loanId) {
+	        return loanService.rejectLoan(loanId);
+	    }
 
-    // Get All Loans
-    @GetMapping
-    public List<Loan> getAllLoans() {
-        return loanService.getAllLoans();
-    }
+	    // Close Loan
+	    @PutMapping("/close/{loanId}")
+	    public LoanDTO closeLoan(@PathVariable Long loanId) throws Exception {
+	        return loanService.closeLoan(loanId);
+	    }
 
-    // Get Loans by Status
-    @GetMapping("/status/{status}")
-    public List<Loan> getLoansByStatus(@PathVariable LoanStatus status) {
-        return loanService.getLoanByStatus(status);
-    }
-    @GetMapping("/amouny/{amount}")
-    public List<Loan> getFindByAmount(@PathVariable double amount){
-    	return loanService.getfindByAmountGreaterThan(amount);
-    }
-    
-    @GetMapping("/emi")
-    public double getEMI(@RequestParam double amount,
-                         @RequestParam double rate,
-                         @RequestParam int tenure) {
-        return loanService.calculateEMI(amount, rate, tenure);
-    }
+	    // Get All Loans
+	    @GetMapping
+	    public List<LoanDTO> getAllLoans() {
+	        return loanService.getAllLoans();
+	    }
+
+	    // Get Loans by Status
+	    @GetMapping("/status/{status}")
+	    public List<LoanDTO> getLoansByStatus(@PathVariable LoanStatus status) {
+	        return loanService.getLoanByStatus(status);
+	    }
+
+	    // Get Loans by Amount
+	    @GetMapping("/amount/{amount}")
+	    public List<LoanDTO> getFindByAmount(@PathVariable Double amount) {
+	        return loanService.getfindByAmountGreaterThan(amount);
+	    }
+
+	    // EMI Calculation
+	    @GetMapping("/emi")
+	    public double getEMI(@RequestParam double amount,
+	                         @RequestParam double rate,
+	                         @RequestParam int tenure) {
+	        return loanService.calculateEMI(amount, rate, tenure);
+	    }
    
 }

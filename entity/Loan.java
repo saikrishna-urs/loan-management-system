@@ -1,5 +1,7 @@
 package com.Spring.Loan.entity;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
@@ -19,8 +21,10 @@ public class Loan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	private Double amount;
 	@Column(name = "interest_rate")
+	
 	private Double interestRate;
 	private Integer tenure;
 
@@ -65,7 +69,7 @@ public class Loan {
 		return interestRate;
 	}
 
-	public void setInterestrate(Double interestRate) {
+	public void setInterestRate(Double interestRate) {
 		this.interestRate = interestRate;
 	}
 
@@ -92,5 +96,10 @@ public class Loan {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	
+	
+
+	
 
 }

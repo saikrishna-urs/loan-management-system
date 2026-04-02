@@ -1,19 +1,32 @@
 # Loan Management System
 
-This is a Spring Boot project developed as part of my learning.
+A Spring Boot based backend application to manage users and loan processes.  
+This project demonstrates real-world backend concepts like DTO, validation, exception handling, and REST APIs.
 
-## Features
-- User creation
-- Loan application
-- Loan approval, rejection, disbursement, closure
-- EMI calculation
+---
 
-## Tech Stack
+## 🚀 Features
+
+- User Management (Create, View Users)
+- Loan Application
+- Loan Approval, Rejection, Disbursement, Closure
+- Loan Filtering by Status and Amount
+- EMI (Equated Monthly Installment) Calculation
+- DTO Layer (Data Transfer Object)
+- Global Exception Handling
+- Input Validation using @Valid
+
+---
+
+## 🛠️ Tech Stack
+
 - Java
 - Spring Boot
 - Spring Data JPA
-- MySQL / H2
-- REST API
-- Postman(Testing)
-## Author
-Sai Krishna
+- Hibernate
+- MySQL / H2 Database
+- REST APIs
+- Git & GitHub
+
+
+
